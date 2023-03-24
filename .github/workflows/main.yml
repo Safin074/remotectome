@@ -1,1 +1,78 @@
+e:
+
+7
+
+        description: 'Enter CRD code'
+
+8
+
+        required: true
+
+9
+
+      pincode:
+
+10
+
+        description: 'Six digit Pinn'
+
+11
+
+        required: true
+
+12
+
+  
+
+13
+
+jobs:
+
+14
+
+  build:
+
+15
+
+    runs-on: windows-latest
+
+16
+
+
+
+17
+
+    steps:
+
+18
+
+    - uses: actions/checkout@v2
+
+19
+
+    - name: Initializing Setup
+
+20
+
+      run: ./setup.ps1
+
+21
+
+    - name: Starting CRD
+
+22
+
+      run: ${{ github.event.inputs.authcode }} -pin=${{ github.event.inputs.pincode }}
+
+23
+
+    - name: Keep Alive
+
+24
+
+      run: ./timeout.ps1
+
+25
+
+
 
